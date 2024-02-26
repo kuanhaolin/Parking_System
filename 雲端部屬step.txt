@@ -1,0 +1,78 @@
+sudo passwd root
+
+vi /etc/ssh/sshd_config
+PermitRootLogin yes
+PasswordAuthentication yes
+
+systemctl restart sshd
+
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo apt-get install apache2
+
+
+sudo apt-get install php 
+sudo apt-get install php-mysql
+sudo apt-get install php-curl
+
+sudo apt-get install mysql-server
+
+//sudo mysql -u root -p
+
+sudo apt-get install phpmyadmin php-mbstring
+//cd /var/www/html
+//ln -s /usr/share/phpmyadmin
+
+sudo vim /etc/phpmyadmin/config-db.php
+systemctl restart apache2
+
+//sudo mysql -u root -p
+//123456  
+//SELECT user,plugin,host FROM mysql.user WHERE user = 'root';
+//SELECT user,plugin,host FROM mysql.user WHERE user = 'admin';
+//ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+//ALTER USER 'admin'@'parking-system-db.cpw6ooaaocwa.us-east-1.rds.amazonaws.com' IDENTIFIED WITH mysql_native_password BY 'adminadmin';
+//FLUSH PRIVILEGES; 
+
+sudo apt install php-pear
+sudo apt install php-dev
+sudo pecl install mongodb
+php -i | grep extension_dir
+vi /etc/php/8.1/apache2/php.ini
+vi /etc/php/8.1/cli/php.ini
+extension_dir=/usr/lib/php/20210902
+extension = mongodb.so
+ 
+
+sudo apt install software-properties-common gnupg apt-transport-https ca-certificates -y
+curl -fsSL https://pgp.mongodb.com/server-7.0.asc |  sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse
+sudo apt update
+sudo apt install mongodb-org -y
+sudo systemctl restart mongod
+sudo systemctl status mongod
+
+sudo chown -R mongodb:mongodb /etc/mongod.conf
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+sudo chmod 1777 /tmp
+sudo rm /tmp/mongodb-27017.sock
+sudo systemctl restart mongod
+sudo systemctl status mongod
+sudo systemctl enable mongod
+sudo nano /etc/mongod.conf
+
+# network interfaces
+net:
+  port: 27017
+  bindIp: 127.0.0.1, server_ip, ...
+sudo systemctl restart apache2
+
+
+
+---
+sudo nano /var/www/html/info.php
+<?php
+phpinfo();
+---

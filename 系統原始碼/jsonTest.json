@@ -1,0 +1,12 @@
+{
+  "_id": {
+    "$oid": "6579ad2f58c626e1e606df7f"
+  },
+  "id": 2288,
+  "license_plate": "panda-100",
+  "in_time":["2005-10-10"],
+  "out_time":[""],
+  "num":-1,
+  "create_time": "2005-10-10",
+  "update_time": "2005-10-15"
+}
